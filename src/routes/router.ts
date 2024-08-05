@@ -1,96 +1,158 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { authGuard } from '../authGuard';
 import LoginApp from "../pages/LoginApp.vue";
 import HomeApp from "../pages/HomeApp.vue";
 import CustumerServiceOptions from "../pages/CustumerServiceOptions.vue";
 import TablesOptions from "../pages/TablesOptions.vue";
-import StreetAbbreviation from "../pages/Tables/SimpleTables/StreetAbbreviation.vue";
-import AbsenceReason from "../pages/Tables/SimpleTables/AbsenceReason.vue";
-import AccountingCode from "../pages/Tables/SimpleTables/AccountingCode.vue";
-import AlternativeSource from "../pages/Tables/SimpleTables/AlternativeSource.vue";
-import BoardTable from "../pages/Tables/SimpleTables/BoardTable.vue";
-import BudgetUnit from "../pages/Tables/SimpleTables/BudgetUnit.vue";
-import CancellationReason from "../pages/Tables/SimpleTables/CancellationReason.vue";
-import CategoryTable from "../pages/Tables/SimpleTables/CategoryTable.vue";
-import CoatingTable from "../pages/Tables/SimpleTables/CoatingTable.vue";
-import CollectionMethod from "../pages/Tables/SimpleTables/CollectionMethod.vue";
-import ConnectionType from "../pages/Tables/SimpleTables/ConnectionType.vue";
-import ConsumerType from "../pages/Tables/SimpleTables/ConsumerType.vue";
-import ContractorTable from "../pages/Tables/SimpleTables/ContractorTable.vue";
-import CutReason from "../pages/Tables/SimpleTables/CutReason.vue";
-import DumpType from "../pages/Tables/SimpleTables/DumpType.vue";
-import EselMaterial from "../pages/Tables/SimpleTables/EselMaterial.vue";
-import EtaTable from "../pages/Tables/SimpleTables/EtaTable.vue";
-import FieldResearch from "../pages/Tables/SimpleTables/FieldResearch.vue";
-import HdBrand from "../pages/Tables/SimpleTables/HdBrand.vue";
-import HdCapacity from "../pages/Tables/SimpleTables/HdCapacity.vue";
-import HdConnectionOrigin from "../pages/Tables/SimpleTables/HdConnectionOrigin.vue";
-import HdDiameter from "../pages/Tables/SimpleTables/HdDiameter.vue";
-import HdLocation from "../pages/Tables/SimpleTables/HdLocation.vue";
-import HdMarking from "../pages/Tables/SimpleTables/HdMarking.vue";
-import HdSize from "../pages/Tables/SimpleTables/HdSize.vue";
-import HdStatus from "../pages/Tables/SimpleTables/HdStatus.vue";
-import HdTransmission from "../pages/Tables/SimpleTables/HdTransmission.vue";
-import InspectionResult from "../pages/Tables/SimpleTables/InspectionResult.vue";
-import LocalTable from "../pages/Tables/SimpleTables/LocalTable.vue";
-import LocateBlockLot from "../pages/Tables/SimpleTables/LocateBlockLot.vue";
-import MaritalStatus from "../pages/Tables/SimpleTables/MaritalStatus.vue";
-import MaterialTable from "../pages/Tables/SimpleTables/MaterialTable.vue";
-import PropertySituation from "../pages/Tables/SimpleTables/PropertySituation.vue";
-import PropertyStandard from "../pages/Tables/SimpleTables/PropertyStandard.vue";
-import PublicActivity from "../pages/Tables/SimpleTables/PublicActivity.vue";
-import PublicResponsability from "../pages/Tables/SimpleTables/PublicResponsability.vue";
-import QuotationType from "../pages/Tables/SimpleTables/QuotationType.vue";
-import ReaderTable from "../pages/Tables/SimpleTables/ReaderTable.vue";
-import ServiceOrderCancellation from "../pages/Tables/SimpleTables/ServiceOrderCancellation.vue";
-import ServiceOrderExtention from "../pages/Tables/SimpleTables/ServiceOrderExtention.vue";
-import SewageType from "../pages/Tables/SimpleTables/SewageType.vue";
-import StateTable from "../pages/Tables/SimpleTables/StateTable.vue";
-import StreetType from "../pages/Tables/SimpleTables/StreetType.vue";
-import SupplySector from "../pages/Tables/SimpleTables/SupplySector.vue";
-import TaxCategory from "../pages/Tables/SimpleTables/TaxCategory.vue";
-import WitnessTable from "../pages/Tables/SimpleTables/WitnessTable.vue";
-import FieldEmployee from "../pages/Tables/SimpleTables/FieldEmployee.vue";
-import ServiceDesk from '../pages/Tables/SimpleTables/ServiceDesk.vue';
-import RealEstate from '../pages/Tables/SimpleTables/RealEstate.vue';
-import SuppliersTable from '../pages/Tables/SimpleTables/SuppliersTable.vue';
-import HdSecuritySeal from '../pages/Tables/SimpleTables/HdSecuritySeal.vue';
-import ServiceUnit from '../pages/Tables/SimpleTables/ServiceUnit.vue';
-import VehicleTable from '../pages/Tables/SimpleTables/VehicleTable.vue';
-import PaymentCategory from '../pages/Tables/FixedTables/PaymentCategory.vue';
-import BillDeliveryType from '../pages/Tables/FixedTables/BillDeliveryType.vue';
-import ServiceUnitPurpose from '../pages/Tables/FixedTables/ServiceUnitPurpose.vue';
-import BillingForm from '../pages/Tables/FixedTables/BillingForm.vue';
-import BillDelivery from '../pages/Tables/FixedTables/BillDelivery.vue';
-import PaymentMethod from '../pages/Tables/FixedTables/PaymentMethod.vue';
-import AuthorizationType from '../pages/Tables/FixedTables/AuthorizationType.vue';
-import BillType from '../pages/Tables/FixedTables/BillType.vue';
-import PaymentIndType from '../pages/Tables/FixedTables/PaymentIndType.vue';
-import BillingType from "../pages/Tables/FixedTables/BillingType.vue";
-import BillingSituation from "../pages/Tables/FixedTables/BillingSituation.vue";
-import ConnectionSituation from "../pages/Tables/FixedTables/ConnectionSituation.vue";
-import ConsumptionIndicator from "../pages/Tables/FixedTables/ConsumptionIndicator.vue";
-import CopysType from "../pages/Tables/FixedTables/CopysType.vue";
-import CustomerService from "../pages/Tables/FixedTables/CustomerService.vue";
-import DebitReturn from "../pages/Tables/FixedTables/DebitReturn.vue";
-import DocumentType from "../pages/Tables/FixedTables/DocumentType.vue";
-import HdRemovalReason from "../pages/Tables/FixedTables/HdRemovalReason.vue";
-import InvoiceType from "../pages/Tables/FixedTables/InvoiceType.vue";
-import MailReturnType from "../pages/Tables/FixedTables/MailReturnType.vue";
-import NegotiationType from "../pages/Tables/FixedTables/NegotiationType.vue";
-import NonBillingReason from "../pages/Tables/FixedTables/NonBillingReason.vue";
-import OccurrenceGroup from "../pages/Tables/FixedTables/OccurrenceGroup.vue";
-import ParcelType from "../pages/Tables/FixedTables/ParcelType.vue";
-import PaymentType from "../pages/Tables/FixedTables/PaymentType.vue";
-import ServiceGroup from "../pages/Tables/FixedTables/ServiceGroup.vue";
-import TableHistory from "../pages/Tables/FixedTables/TableHistory.vue";
-import NeighborhoodTable from "../pages/Tables/SpecialTables/NeighborhoodTable.vue";
+import frmAbrevLograd from "../pages/Tables/SimpleTables/frmAbrevLograd.vue";
+import frmMotivo_Falta from "../pages/Tables/SimpleTables/frmMotivo_Falta.vue";
+import frmContabil from "../pages/Tables/SimpleTables/frmContabil.vue";
+import frmFonte from "../pages/Tables/SimpleTables/frmFonte.vue";
+import frmClienteInt from "../pages/Tables/SimpleTables/frmClienteInt.vue";
+import frmDistrito from "../pages/Tables/SimpleTables/frmDistrito.vue";
+import frmCancelamento from "../pages/Tables/SimpleTables/frmCancelamento.vue";
+import frmCategoria from "../pages/Tables/SimpleTables/frmCategoria.vue";
+import frmRevestimento from "../pages/Tables/SimpleTables/frmRevestimento.vue";
+import frmFormaArrecadacao from "../pages/Tables/SimpleTables/frmFormaArrecadacao.vue";
+import frmTipoLigacao from "../pages/Tables/SimpleTables/frmTipoLigacao.vue";
+import frmConsumidor from "../pages/Tables/SimpleTables/frmConsumidor.vue";
+import frmEmpreiteira from "../pages/Tables/SimpleTables/frmEmpreiteira.vue";
+import frmCorte from "../pages/Tables/SimpleTables/frmCorte.vue";
+import frmTipoDespejo from "../pages/Tables/SimpleTables/frmTipoDespejo.vue";
+import frmCavalete from "../pages/Tables/SimpleTables/frmCavalete.vue";
+import frmETA from "../pages/Tables/SimpleTables/frmETA.vue";
+import frmPesquisaCampo from "../pages/Tables/SimpleTables/frmPesquisaCampo.vue";
+import frmMarca from "../pages/Tables/SimpleTables/frmMarca.vue";
+import frmCapacidade from "../pages/Tables/SimpleTables/frmCapacidade.vue";
+import frmCaracteristicasHD from "../pages/Tables/SimpleTables/frmCaracteristicasHD.vue"
+import frmOriLigacao from "../pages/Tables/SimpleTables/frmOriLigacao.vue";
+// import frmEmailParametros from "../pages/Tables/SimpleTables/frmEmailParametros.vue"
+import frmDiametro from "../pages/Tables/SimpleTables/frmDiametro.vue";
+import frmLocalHD from "../pages/Tables/SimpleTables/frmLocalHD.vue";
+import frmMarcacao from "../pages/Tables/SimpleTables/frmMarcacao.vue";
+import frmTamanho from "../pages/Tables/SimpleTables/frmTamanho.vue";
+import frmEstHD from "../pages/Tables/SimpleTables/frmEstHD.vue";
+import frmTransmissao from "../pages/Tables/SimpleTables/frmTransmissao.vue";
+import frmResultFiscaliz from "../pages/Tables/SimpleTables/frmResultFiscaliz.vue";
+import frmLocal from "../pages/Tables/SimpleTables/frmLocal.vue";
+import frmLocaliz from "../pages/Tables/SimpleTables/frmLocaliz.vue";
+import frmEstadoCivil from "../pages/Tables/SimpleTables/frmEstadoCivil.vue";
+import frmMaterial from "../pages/Tables/SimpleTables/frmMaterial.vue";
+import frmSitImovel from "../pages/Tables/SimpleTables/frmSitImovel.vue";
+import frmPadraoImovel from "../pages/Tables/SimpleTables/frmPadraoImovel.vue";
+import frmTipoAtividPub from "../pages/Tables/SimpleTables/frmTipoAtividPub.vue";
+import frmRespPublica from "../pages/Tables/SimpleTables/frmRespPublica.vue";
+import frmTipoCotacao from "../pages/Tables/SimpleTables/frmTipoCotacao.vue";
+import frmLeiturista from "../pages/Tables/SimpleTables/frmLeiturista.vue";
+import frmCancOs from "../pages/Tables/SimpleTables/frmCancOs.vue";
+import frmProrrogOs from "../pages/Tables/SimpleTables/frmProrrogOs.vue";
+import frmTipoEsgotamento from "../pages/Tables/SimpleTables/frmTipoEsgotamento.vue";
+import frmUF from "../pages/Tables/SimpleTables/frmUF.vue";
+import frmLogradouro from "../pages/Tables/SimpleTables/frmLogradouro.vue";
+import frmSetorAbastec from "../pages/Tables/SimpleTables/frmSetorAbastec.vue";
+import frmCatTarifa from "../pages/Tables/SimpleTables/frmCatTarifa.vue";
+import frmTestemunhas from "../pages/Tables/SimpleTables/frmTestemunha.vue";
+import frmFuncionarioCampo from "../pages/Tables/SimpleTables/frmFuncionarioCampo.vue";
+import frmGuiche from '../pages/Tables/SimpleTables/frmGuiche.vue';
+import frmImobiliaria from '../pages/Tables/SimpleTables/frmImobiliaria.vue';
+import frmFornecedor from '../pages/Tables/SimpleTables/frmFornecedor.vue';
+import frmLacre from '../pages/Tables/SimpleTables/frmLacre.vue';
+import frmUnidOrcam from '../pages/Tables/SimpleTables/frmUnidOrcam.vue';
+import frmVeiculo from '../pages/Tables/SimpleTables/frmVeiculo.vue';
+import frmCatPgto from '../pages/Tables/FixedTables/frmCatPgto.vue';
+import frmEntrega from '../pages/Tables/FixedTables/frmEntrega.vue';
+import frmFinalidade from '../pages/Tables/FixedTables/frmFinalidade.vue';
+import frmFormaFaturamento from '../pages/Tables/FixedTables/frmFormaFaturamento.vue';
+import frmFormaPagamento from '../pages/Tables/FixedTables/frmFormaPagamento.vue';
+import frmTipoAutorizacao from '../pages/Tables/FixedTables/frmTipoAutorizacao.vue';
+import frmFatura from '../pages/Tables/FixedTables/frmFatura.vue';
+import frmTipoIndPagamento from '../pages/Tables/FixedTables/frmTipoIndPagamento.vue';
+import frmTipoCobranca from "../pages/Tables/FixedTables/frmTipoCobranca.vue";
+import frmPagamento from "../pages/Tables/FixedTables/frmPagamento.vue";
+import frmSitLigacao from "../pages/Tables/FixedTables/frmSitLigacao.vue";
+import frmIndConsumo from "../pages/Tables/FixedTables/frmIndConsumo.vue";
+import frmTipoVias from "../pages/Tables/FixedTables/frmTipoVias.vue";
+import frmServAtendimento from "../pages/Tables/FixedTables/frmServAtendimento.vue";
+import frmRetornoDebito from "../pages/Tables/FixedTables/frmRetornoDebito.vue";
+import frmTipoDocumento from "../pages/Tables/FixedTables/frmTipoDocumento.vue";
+import frmRetirada from "../pages/Tables/FixedTables/frmRetirada.vue";
+import frmTipoFaturamento from "../pages/Tables/FixedTables/frmTipoFaturamento.vue";
+import frmTipoRetCorreios from "../pages/Tables/FixedTables/frmTipoRetCorreios.vue";
+import frmTipoNegociacao from "../pages/Tables/FixedTables/frmTipoNegociacao.vue";
+import frmMotivoNaoFat from "../pages/Tables/FixedTables/frmMotivoNaoFat.vue";
+import frmGrpAnorm from "../pages/Tables/FixedTables/frmGrpAnorm.vue";
+import frmTipoParcela from "../pages/Tables/FixedTables/frmTipoParcela.vue";
+import frmTipoPgto from "../pages/Tables/FixedTables/frmTipoPgto.vue";
+import frmGrupoServico from "../pages/Tables/FixedTables/frmGrupoServico.vue";
+import frmHistoricoTab from "../pages/Tables/FixedTables/frmHistoricoTab.vue";
+import frmBairro from "../pages/Tables/SpecialTables/frmBairro.vue";
 import BankTable from "../pages/Tables/SpecialTables/BankTable.vue";
-import ReadingIndicator from "../pages/Tables/FixedTables/ReadingIndicator.vue";
-import ConsumptionSituation from "../pages/Tables/FixedTables/ConsumptionSituation.vue";
-import NegotiationSituation from "../pages/Tables/FixedTables/NegotiationSituation.vue";
-import CustomerServiceType from "../pages/Tables/FixedTables/CustomerServiceType.vue";
-import ControlType from "../pages/Tables/FixedTables/ControlType.vue";
-import UpdateType from "../pages/Tables/FixedTables/UpdateType.vue";
+import frmIndLeitura from "../pages/Tables/FixedTables/frmIndLeitura.vue";
+import frmConsumo from "../pages/Tables/FixedTables/frmConsumo.vue";
+import frmSitNegociacao from "../pages/Tables/FixedTables/frmSitNegociacao.vue";
+import frmTipoAtendimento from "../pages/Tables/FixedTables/frmTipoAtendimento.vue";
+import frmTipoControle from "../pages/Tables/FixedTables/frmTipoControle.vue";
+import frmTipoAtualiza from "../pages/Tables/FixedTables/frmTipoAtualiza.vue";
+import frmTipoMoeda from "../pages/Tables/FixedTables/frmTipoMoeda.vue";
+import frmFatEspecial from "../pages/Tables/FixedTables/frmFatEspecial.vue";
+import frmVazamento from "../pages/Tables/FixedTables/frmVazamento.vue";
+import frmTipoRateioConsumo from "../pages/Tables/FixedTables/frmTipoRateioConsumo.vue";
+import frmEstadoAfericao from "../pages/Tables/FixedTables/frmEstadoAfericao.vue";
+import frmIndicativoGrupoLeitura from "../pages/Tables/FixedTables/frmIndicativoGrupoLeitura.vue";
+import frmIndicativoRetificada from "../pages/Tables/FixedTables/frmIndicativoRetificada.vue";
+import frmLocalHidrometro from "../pages/Tables/FixedTables/frmLocalHidrometro.vue";
+import frmLocalLacre from "../pages/Tables/FixedTables/frmLocalLacre.vue";
+import frmMotivoFaturamentoEspecial from "../pages/Tables/FixedTables/frmMotivoFaturamentoEspecial.vue";
+import frmMotivoSPCExclusao from "../pages/Tables/FixedTables/frmMotivoSPCExclusao.vue";
+import frmRiles from "../pages/Tables/FixedTables/frmRiles.vue";
+import frmPassagem from "../pages/Tables/FixedTables/frmPassagem.vue";
+import frmResultadoAfericao from "../pages/Tables/FixedTables/frmResultadoAfericao.vue";
+import frmSituacaoOrcamento from "../pages/Tables/FixedTables/frmSituacaoOrcamento.vue";
+import frmSituacaoOS from "../pages/Tables/FixedTables/frmSituacaoOS.vue";
+import frmTipoAferHD from "../pages/Tables/FixedTables/frmTipoAferHD.vue";
+import frmTipoCobrancaMinima from "../pages/Tables/FixedTables/frmTipoCobrancaMinima.vue";
+import frmTipoDataGrupoLeitura from "../pages/Tables/FixedTables/frmTipoDataGrupoLeitura.vue";
+import frmTipoDocPessoa from "../pages/Tables/FixedTables/frmTipoDocPessoa.vue";
+import frmTipoLancamento from "../pages/Tables/FixedTables/frmTipoLancamento.vue";
+import frmTipoOcorrencia from "../pages/Tables/FixedTables/frmTipoOcorrencia.vue";
+import frmTipoParcelamento from "../pages/Tables/FixedTables/frmTipoParcelamento.vue";
+import frmTipoPgtoOcorrencia from "../pages/Tables/FixedTables/frmTipoPgtoOcorrencia.vue";
+import frmTipoProblemaHD from "../pages/Tables/FixedTables/frmTipoProblemaHD.vue";
+import frmTipoRelacaoGarantia from "../pages/Tables/FixedTables/frmTipoRelacaoGarantia.vue";
+import frmTipoVazamento from "../pages/Tables/FixedTables/frmTipoVazamento.vue";
+import frmLegendaSNIS from "../pages/Tables/FixedTables/frmLegendaSNIS.vue";
+import frmMaterialRede from "../pages/Tables/FixedTables/frmMaterialRede.vue";
+import frmRetornoDebitoCef from "../pages/Tables/FixedTables/frmRetornoDebitoCef.vue";
+import frmTipoEntrega from "../pages/Tables/FixedTables/frmTipoEntrega.vue";
+import frmTipoEvento from "../pages/Tables/FixedTables/frmTipoEvento.vue";
+import frmTipoIsento from "../pages/Tables/FixedTables/frmTipoIsento.vue";
+import frmTipoProcessamento from "../pages/Tables/FixedTables/frmTipoProcessamento.vue";
+import frmTipoHistoricoProcesso from "../pages/Tables/FixedTables/frmTipoHistoricoProcesso.vue";
+import frmTipoUnidadeEst from "../pages/Tables/FixedTables/frmTipoUnidadeEst.vue";
+import frmSisIndicativo from "../pages/Tables/FixedTables/frmSisIndicativo.vue";
+import frmSisParametro from "../pages/Tables/FixedTables/frmSisParametro.vue";
+import frmTipoCalculo from "../pages/Tables/FixedTables/frmTipoCalculo.vue";
+import frmIndiceJudiciario from "../pages/Tables/SimpleTables/frmIndiceJudiciario.vue";
+import frmMaterialFamilia from "../pages/Tables/SimpleTables/frmMaterialFamilia.vue";
+import frmMotivoEncerramento from "../pages/Tables/SimpleTables/frmMotivoEncerramento.vue";
+import frmMotivoInativo from "../pages/Tables/SimpleTables/frmMotivoInativo.vue";
+import frmMotivoProcesso from "../pages/Tables/SimpleTables/frmMotivoProcesso.vue";
+import frmMovimento from "../pages/Tables/SimpleTables/frmMovimento.vue";
+import frmTipoConsEsp from "../pages/Tables/SimpleTables/frmTipoConsEsp.vue";
+import frmTipoGrandeCons from "../pages/Tables/SimpleTables/frmTipoGrandeCons.vue";
+import frmTipoPavimento from "../pages/Tables/SimpleTables/frmTipoPavimento.vue";
+import frmTipoPavimentoCalcada from "../pages/Tables/SimpleTables/frmTipoPavimentoCalcada.vue";
+import frmTipoPavimentoRUA from "../pages/Tables/SimpleTables/frmTipoPavimentoRUA.vue";
+import frmTipoRreservatorio from "../pages/Tables/SimpleTables/frmTipoRreservatorio.vue";
+import frmZonaAtendimento from "../pages/Tables/SimpleTables/frmZonaAtendimento.vue";
+import frmMensagemAPP from "../pages/Tables/SimpleTables/frmMensagemAPP.vue";
+import frmAPPMenu from "../pages/Tables/SimpleTables/frmAPPMenu.vue";
+import frmFuncCampoEmp from "../pages/Tables/SimpleTables/frmFuncCampoEmp.vue";
+import frmSistema from "../pages/Tables/SimpleTables/frmSistema.vue";
+import frmSistemaInteragem from "../pages/Tables/SimpleTables/frmSistemaInteragem.vue";
+import frmTipoFila from "../pages/Tables/SimpleTables/frmTipoFila.vue";
+import frmTipoUnidMaterial from "../pages/Tables/SimpleTables/frmTipoUnidMaterial.vue";
+import frmBasesDados from "../pages/Tables/SimpleTables/frmBasesDados.vue";
 const routes = [
   {
     path: "/",
@@ -101,462 +163,917 @@ const routes = [
     path: "/home",
     name: "HomeApp",
     component: HomeApp,
+    beforeEnter: authGuard,
   },
   {
     path: "/atendimento-ao-cliente",
     name: "CustumerServiceOptions",
     component: CustumerServiceOptions,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas",
     name: "TablesOptions",
     component: TablesOptions,
+    beforeEnter: authGuard,
   },
   {
-    path: "/tabelas/tabelas-simples/abreviacao-de-codigo-de-logradouro",
-    name: "StreetAbbreviation",
-    component: StreetAbbreviation,
+    path: "/tabelas/tabelas-simples/abreviacao-codigo-logradouro",
+    name: "frmAbrevLograd",
+    component: frmAbrevLograd,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/motivo-da-falta",
-    name: "AbsenceReason",
-    component: AbsenceReason,
+    name: "frmMotivo_Falta",
+    component: frmMotivo_Falta,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/codigo-contabil",
-    name: "AccountingCode",
-    component: AccountingCode,
+    name: "frmContabil",
+    component: frmContabil,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/fonte-alternativa",
-    name: "AlternativeSource",
-    component: AlternativeSource,
+    name: "frmFonte",
+    component: frmFonte,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/diretoria",
-    name: "BoardTable",
-    component: BoardTable,
+    name: "frmClienteInt",
+    component: frmClienteInt,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/unidade-orcamentaria",
-    name: "BudgetUnit",
-    component: BudgetUnit,
+    name: "frmDistrito",
+    component: frmDistrito,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/motivo-de-cancelamento",
-    name: "CancellationReason",
-    component: CancellationReason,
+    name: "frmCancelamento",
+    component: frmCancelamento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/categoria",
-    name: "CategoryTable",
-    component: CategoryTable,
+    name: "frmCategoria",
+    component: frmCategoria,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/revestimento",
-    name: "CoatingTable",
-    component: CoatingTable,
+    name: "frmRevestimento",
+    component: frmRevestimento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/forma-de-arrecadacao",
-    name: "CollectionMethod",
-    component: CollectionMethod,
+    name: "frmFormaArrecadacao",
+    component: frmFormaArrecadacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tipo-de-ligacao",
-    name: "ConnectionType",
-    component: ConnectionType,
+    name: "frmTipoLigacao",
+    component: frmTipoLigacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tipo-de-consumidor",
-    name: "ConsumerType",
-    component: ConsumerType,
+    name: "frmConsumidor",
+    component: frmConsumidor,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/empreiteira",
-    name: "ContractorTable",
-    component: ContractorTable,
+    name: "frmEmpreiteira",
+    component: frmEmpreiteira,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/motivo-de-corte",
-    name: "CutReason",
-    component: CutReason,
+    name: "frmCorte",
+    component: frmCorte,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tipo-de-despejo",
-    name: "DumpType",
-    component: DumpType,
+    name: "frmTipoDespejo",
+    component: frmTipoDespejo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/material-do-cavalete",
-    name: "EselMaterial",
-    component: EselMaterial,
+    name: "frmCavalete",
+    component: frmCavalete,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/eta",
-    name: "EtaTable",
-    component: EtaTable,
+    name: "frmETA",
+    component: frmETA,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/pesquisa-de-campo",
-    name: "FieldResearch",
-    component: FieldResearch,
+    name: "frmPesquisaCampo",
+    component: frmPesquisaCampo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/marca-hd",
-    name: "HdBrand",
-    component: HdBrand,
+    name: "frmMarca",
+    component: frmMarca,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/capacidade-hd",
-    name: "HdCapacity",
-    component: HdCapacity,
+    name: "frmCapacidade",
+    component: frmCapacidade,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/origem-de-ligacao-hd",
-    name: "HdConnectionOrigin",
-    component: HdConnectionOrigin,
+    name: "frmOriLigacao",
+    component: frmOriLigacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/diametro-hd",
-    name: "HdDiameter",
-    component: HdDiameter,
+    name: "frmDiametro",
+    component: frmDiametro,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/localizacao-hd",
-    name: "HdLocation",
-    component: HdLocation,
+    name: "frmLocalHD",
+    component: frmLocalHD,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/marcacao-hd",
-    name: "HdMarking",
-    component: HdMarking,
+    name: "frmMarcacao",
+    component: frmMarcacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tamanho-hd",
-    name: "HdSize",
-    component: HdSize,
+    name: "frmTamanho",
+    component: frmTamanho,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/estado-hd",
-    name: "HdStatus",
-    component: HdStatus,
+    name: "frmEstHD",
+    component: frmEstHD,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/transmissao-hd",
-    name: "HdTransmission",
-    component: HdTransmission,
+    name: "frmTransmissao",
+    component: frmTransmissao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/resultado-de-fiscalizacao",
-    name: "InspectionResult",
-    component: InspectionResult,
+    name: "frmResultFiscaliz",
+    component: frmResultFiscaliz,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/local",
-    name: "LocalTable",
-    component: LocalTable,
+    name: "frmLocal",
+    component: frmLocal,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/quadra-lote",
-    name: "LocateBlockLot",
-    component: LocateBlockLot,
+    name: "frmLocaliz",
+    component: frmLocaliz,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/estado-civil",
-    name: "MaritalStatus",
-    component: MaritalStatus,
+    name: "frmEstadoCivil",
+    component: frmEstadoCivil,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/material",
-    name: "MaterialTable",
-    component: MaterialTable,
+    name: "frmMaterial",
+    component: frmMaterial,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/situacao-imovel",
-    name: "PropertySituation",
-    component: PropertySituation,
+    name: "frmSitImovel",
+    component: frmSitImovel,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/padrao-imovel",
-    name: "PropertyStandard",
-    component: PropertyStandard,
+    name: "frmPadraoImovel",
+    component: frmPadraoImovel,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/atividade-publica",
-    name: "PublicActivity",
-    component: PublicActivity,
+    name: "frmTipoAtividPub",
+    component: frmTipoAtividPub,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/responsabilidade-publica",
-    name: "PublicResponsability",
-    component: PublicResponsability,
+    name: "frmRespPublica",
+    component: frmRespPublica,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tipo-de-cotacao",
-    name: "QuotationType",
-    component: QuotationType,
+    name: "frmTipoCotacao",
+    component: frmTipoCotacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/leiturista",
-    name: "ReaderTable",
-    component: ReaderTable,
+    name: "frmLeiturista",
+    component: frmLeiturista,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/cancelamento-de-ordem-de-servico",
-    name: "ServiceOrderCancellation",
-    component: ServiceOrderCancellation,
+    name: "frmCancOs",
+    component: frmCancOs,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/prorrogacao-de-ordem-de-servico",
-    name: "ServiceOrderExtention",
-    component: ServiceOrderExtention,
+    name: "frmProrrogOs",
+    component: frmProrrogOs,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/tipo-de-esgotamento",
-    name: "SewageType",
-    component: SewageType,
+    name: "frmTipoEsgotamento",
+    component: frmTipoEsgotamento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/estado",
-    name: "StateTable",
-    component: StateTable,
+    name: "frmUF",
+    component: frmUF,
+    beforeEnter: authGuard,
   },
+  
   {
     path: "/tabelas/tabelas-simples/tipo-de-logradouro",
-    name: "StreetType",
-    component: StreetType,
+    name: "frmLogradouro",
+    component: frmLogradouro,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/setor-de-abastecimento",
-    name: "SupplySector",
-    component: SupplySector,
+    name: "frmSetorAbastec",
+    component: frmSetorAbastec,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/categoria-de-tarifa",
-    name: "TaxCategory",
-    component: TaxCategory,
+    name: "frmCatTarifa",
+    component: frmCatTarifa,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/caracteristicas-do-hd",
+    name: "frmCaracteristicasHD",
+    component: frmCaracteristicasHD,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/testemunha",
-    name: "WitnessTable",
-    component: WitnessTable,
+    name: "frmTestemunhas",
+    component: frmTestemunhas,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/funcionario-de-campo",
-    name: "FieldEmployee",
-    component: FieldEmployee,
+    name: "frmFuncionarioCampo",
+    component: frmFuncionarioCampo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/guiche-de-atendimento",
-    name: "ServiceDesk",
-    component: ServiceDesk,
+    name: "frmGuiche",
+    component: frmGuiche,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/imobiliaria",
-    name: "RealEstate",
-    component: RealEstate,
+    name: "frmImobiliaria",
+    component: frmImobiliaria,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/fornecedores",
-    name: "SuppliersTable",
-    component: SuppliersTable,
+    name: "frmFornecedor",
+    component: frmFornecedor,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/lacre-do-hd",
-    name: "HdSecuritySeal",
-    component: HdSecuritySeal,
+    name: "frmLacre",
+    component: frmLacre,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/unidade-de-servico",
-    name: "ServiceUnit",
-    component: ServiceUnit,
+    name: "frmUnidOrcam",
+    component: frmUnidOrcam,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-simples/veiculo",
-    name: "VehicleTable",
-    component: VehicleTable,
+    name: "frmVeiculo",
+    component: frmVeiculo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/grupo-de-ocorrencia",
-    name: "OccurrenceGroup",
-    component: OccurrenceGroup,
+    name: "frmGrpAnorm",
+    component: frmGrpAnorm,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/forma-de-faturamento",
-    name: "BillingForm",
-    component: BillingForm,
+    name: "frmFormaFaturamento",
+    component: frmFormaFaturamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-rateio-de-consumo",
+    name: "frmTipoRateioConsumo",
+    component: frmTipoRateioConsumo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/finalidade-unidade-de-servico",
-    name: "ServiceUnitPurpose",
-    component: ServiceUnitPurpose,
+    name: "frmFinalidade",
+    component: frmFinalidade,
+    beforeEnter: authGuard,
+  },
+
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-vazamento",
+    name: "frmVazamento",
+    component: frmVazamento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/situacao-de-fatura",
-    name: "BillingSituation",
-    component: BillingSituation,
+    name: "frmPagamento",
+    component: frmPagamento,
+    beforeEnter: authGuard,
   },
   {
-    path: "/tabelas/tabelas-fixas/tipo-de-cobrança",
-    name: "BillingType",
-    component: BillingType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-entrega-de-conta",
-    name: "BillDeliveryType",
-    component: BillDeliveryType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/categoria-de-pagamento",
-    name: "PaymentCategory",
-    component: PaymentCategory,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-entrega-de-conta",
-    name: "BillDelivery",
-    component: BillDelivery,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-retorno-dos-correios",
-    name: "MailReturnType",
-    component: MailReturnType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-vias",
-    name: "CopysType",
-    component: CopysType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-parcela",
-    name: "ParcelType",
-    component: ParcelType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/situacao-de-ligacao",
-    name: "ConnectionSituation",
-    component: ConnectionSituation,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/forma-de-pagamento",
-    name: "PaymentMethod",
-    component: PaymentMethod,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/grupo-de-servico",
-    name: "ServiceGroup",
-    component: ServiceGroup,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/historico-de-tabelas",
-    name: "TableHistory",
-    component: TableHistory,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/indicativo-de-consumo",
-    name: "ConsumptionIndicator",
-    component: ConsumptionIndicator,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/motivo-de-nao-faturamento",
-    name: "NonBillingReason",
-    component: NonBillingReason,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/motivo-de-retirada-hd",
-    name: "HdRemovalReason",
-    component: HdRemovalReason,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/retorno-de-debito",
-    name: "DebitReturn",
-    component: DebitReturn,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/servico-de-atendimento",
-    name: "CustomerService",
-    component: CustomerService,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-autorizacao",
-    name: "AuthorizationType",
-    component: AuthorizationType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-fatura",
-    name: "BillType",
-    component: BillType,
-  },
-  {
-    path: "/tabelas/tabelas-fixas/tipo-de-documento",
-    name: "DocumentType",
-    component: DocumentType,
+    path: "/tabelas/tabelas-fixas/tipo-moeda",
+    name: "frmTipoMoeda",
+    component: frmTipoMoeda,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-de-cobranca",
-    name: "BillingType",
-    component: BillingType,
+    name: "frmTipoCobranca",
+    component: frmTipoCobranca,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-entrega",
+    name: "frmEntrega",
+    component: frmEntrega,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/categoria-de-pagamento",
+    name: "frmCatPgto",
+    component: frmCatPgto,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/entrega-de-conta",
+    name: "frmEntrega",
+    component: frmEntrega,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-retorno-dos-correios",
+    name: "frmTipoRetCorreios",
+    component: frmTipoRetCorreios,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-vias",
+    name: "frmTipoVias",
+    component: frmTipoVias,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-parcela",
+    name: "frmTipoParcela",
+    component: frmTipoParcela,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/situacao-de-ligacao",
+    name: "frmSitLigacao",
+    component: frmSitLigacao,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/forma-de-pagamento",
+    name: "frmFormaPagamento",
+    component: frmFormaPagamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/grupo-de-servico",
+    name: "frmGrupoServico",
+    component: frmGrupoServico,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/historico-de-tabelas",
+    name: "frmHistoricoTab",
+    component: frmHistoricoTab,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/indicativo-de-consumo",
+    name: "frmIndConsumo",
+    component: frmIndConsumo,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/motivo-de-nao-faturamento",
+    name: "frmMotivoNaoFat",
+    component: frmMotivoNaoFat,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/motivo-de-retirada-hd",
+    name: "frmRetirada",
+    component: frmRetirada,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/retorno-de-debito",
+    name: "frmRetornoDebito",
+    component: frmRetornoDebito,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/servico-de-atendimento",
+    name: "frmServAtendimento",
+    component: frmServAtendimento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-autorizacao",
+    name: "frmTipoAutorizacao",
+    component: frmTipoAutorizacao,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-fatura",
+    name: "frmFatura",
+    component: frmFatura,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-documento",
+    name: "frmTipoDocumento",
+    component: frmTipoDocumento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-ind-de-pagamento",
-    name: "PaymentIndType",
-    component: PaymentIndType,
+    name: "frmTipoIndPagamento",
+    component: frmTipoIndPagamento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-de-faturamento",
-    name: "InvoiceType",
-    component: InvoiceType,
+    name: "frmTipoFaturamento",
+    component: frmTipoFaturamento,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-de-negociacao",
-    name: "NegotiationType",
-    component: NegotiationType,
+    name: "frmTipoNegociacao",
+    component: frmTipoNegociacao,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-de-pagamento",
-    name: "PaymentType",
-    component: PaymentType,
+    name: "frmTipoPgto",
+    component: frmTipoPgto,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-especiais/bairro",
-    name: "NeighborhoodTable",
-    component: NeighborhoodTable,
+    name: "frmBairro",
+    component: frmBairro,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-especiais/banco",
     name: "BankTable",
     component: BankTable,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/indicativo-de-leitura",
-    name: "ReadingIndicator",
-    component: ReadingIndicator,
+    name: "frmIndLeitura",
+    component: frmIndLeitura,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/situacao-de-consumo",
-    name: "ConsumptionSituation",
-    component: ConsumptionSituation,
+    name: "frmConsumo",
+    component: frmConsumo,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/situacao-de-negociacao",
-    name: "NegotiationSituation",
-    component: NegotiationSituation,
+    name: "frmSitNegociacao",
+    component: frmSitNegociacao,
+    beforeEnter: authGuard,
   },
   {
     path:"/tabelas/tabelas-fixas/tipo-de-atendimento",
-    name:"CustomerServiceType",
-    component: CustomerServiceType,
+    name:"frmTipoAtendimento",
+    component: frmTipoAtendimento,
+    beforeEnter: authGuard,
   },
   {
     path:"/tabelas/tabelas-fixas/tipo-de-controle",
-    name:"ControlType",
-    component: ControlType,
+    name:"frmTipoControle",
+    component: frmTipoControle,
+    beforeEnter: authGuard,
   },
   {
     path: "/tabelas/tabelas-fixas/tipo-de-atualizacao",
-    name: "UpdateType",
-    component: UpdateType,
+    name: "frmTipoAtualiza",
+    component: frmTipoAtualiza,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/estado-de-afericao",
+    name: "frmEstadoAfericao",
+    component: frmEstadoAfericao,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/indicativo-de-grupo-de-leitura",
+    name: "frmIndicativoGrupoLeitura",
+    component: frmIndicativoGrupoLeitura,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/indicativo-de-retificada",
+    name: "frmIndicativoRetificada",
+    component: frmIndicativoRetificada,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/local-do-hidrometro",
+    name: "frmLocalHidrometro",
+    component: frmLocalHidrometro,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/local-do-lacre",
+    name: "frmLocalLacre",
+    component: frmLocalLacre,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/motivo-de-faturamento-especial",
+    name: "frmMotivoFaturamentoEspecial",
+    component: frmMotivoFaturamentoEspecial,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/motivo-de-exclusao-do-spc",
+    name: "frmMotivoSPCExclusao",
+    component: frmMotivoSPCExclusao,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/nivel-de-contaminacao",
+    name: "frmRiles",
+    component: frmRiles,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/passagem",
+    name: "frmPassagem",
+    component: frmPassagem,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/resultado-de-afericao",
+    name: "frmResultadoAfericao",
+    component: frmResultadoAfericao,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/situacao-de-orcamento",
+    name: "frmSituacaoOrcamento",
+    component: frmSituacaoOrcamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/situacao-de-ordem-de-servico",
+    name: "frmSituacaoOS",
+    component: frmSituacaoOS,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-afericao-hd",
+    name: "frmTipoAferHD",
+    component: frmTipoAferHD,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-cobranca-minima",
+    name: "frmTipoCobrancaMinima",
+    component: frmTipoCobrancaMinima,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-data-do-grupo-de-leitura",
+    name: "frmTipoDataGrupoLeitura",
+    component: frmTipoDataGrupoLeitura,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-documento-da-pessoal",
+    name: "frmTipoDocPessoa",
+    component: frmTipoDocPessoa,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-lancamento",
+    name: "frmTipoLancamento",
+    component: frmTipoLancamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-ocorrencia",
+    name: "frmTipoOcorrencia",
+    component: frmTipoOcorrencia,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas/fixas/tipo-de-parcelamento",
+    name: "frmTipoParcelamento",
+    component: frmTipoParcelamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-ocorrencia-de-pagamento",
+    name: "frmTipoPgtoOcorrencia",
+    component: frmTipoPgtoOcorrencia,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-problema-do-hd",
+    name: "frmTipoProblemaHD",
+    component: frmTipoProblemaHD,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-relacao-dos-servicos-de-garantia",
+    name: "frmTipoRelacaoGarantia",
+    component: frmTipoRelacaoGarantia,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-vazamento",
+    name: "frmTipoVazamento",
+    component: frmTipoVazamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/legenda-snis",
+    name: "frmLegendaSNIS",
+    component: frmLegendaSNIS,
+    beforeEnter: authGuard,
+  },
+  {
+    path:"/tabelas/tabelas-fixas/materia-de-rede",
+    name:"frmMaterialRede",
+    component: frmMaterialRede,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/retorno-de-debito-cef",
+    name: "frmRetornoDebitoCef",
+    component: frmRetornoDebitoCef,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-entrega-de-conta",
+    name: "frmTipoEntrega",
+    component: frmTipoEntrega,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-evento",
+    name: "frmTipoEvento",
+    component: frmTipoEvento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-isento",
+    name: "frmTipoIsento",
+    component: frmTipoIsento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-processamento",
+    name: "frmTipoProcessamento",
+    component: frmTipoProcessamento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-faturamento-especial",
+    name: "frmFatEspecial",
+    component: frmFatEspecial,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-historico-do-processo",
+    name: "frmTipoHistoricoProcesso",
+    component: frmTipoHistoricoProcesso,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-unidade-estimada",
+    name: "frmTipoUnidadeEst",
+    component: frmTipoUnidadeEst,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/indicativos-de-tabelas",
+    name: "frmSisIndicativo",
+    component: frmSisIndicativo,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/indicativos-de-parametros",
+    name: "frmSisParametro",
+    component: frmSisParametro,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-fixas/tipo-de-calculo",
+    name: "frmTipoCalculo",
+    component: frmTipoCalculo,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/indice-do-judiciario",
+    name: "frmIndiceJudiciario",
+    component: frmIndiceJudiciario,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-familia-do-material",
+    name: "frmMaterialFamilia",
+    component: frmMaterialFamilia,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/motivo-do-encerramento",
+    name: "frmMotivoEncerramento",
+    component: frmMotivoEncerramento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/motivo-inativo",
+    name: "frmMotivoInativo",
+    component: frmMotivoInativo,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/motivo-do-processo",
+    name: "frmMotivoProcesso",
+    component: frmMotivoProcesso,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/movimento",
+    name: "frmMovimento",
+    component: frmMovimento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-consumidor-especial",
+    name: "frmTipoConsEsp",
+    component: frmTipoConsEsp,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-grande-consumidor",
+    name: "frmTipoGrandeCons",
+    component: frmTipoGrandeCons,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-pavimento",
+    name: "frmTipoPavimento",
+    component: frmTipoPavimento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-pavimento-da-calcada",
+    name: "frmTipoPavimentoCalcada",
+    component: frmTipoPavimentoCalcada,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-do-pavimento-da-rua",
+    name: "frmTipoPavimentoRUA",
+    component: frmTipoPavimentoRUA,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-reservatorio",
+    name: "frmTipoRreservatorio",
+    component: frmTipoRreservatorio,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/zona-de-atendimento",
+    name: "frmZonaAtendimento",
+    component: frmZonaAtendimento,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/mensagem-do-app",
+    name: "frmMensagemAPP",
+    component: frmMensagemAPP,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/app-menu",
+    name: "frmAPPMenu",
+    component: frmAPPMenu,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/funcionario-de-campo-da-empreiteira",
+    name: "frmFuncCampoEmp",
+    component: frmFuncCampoEmp,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/modulos",
+    name: "frmSistema",
+    component: frmSistema,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/sistemas-interagentes",
+    name: "frmSistemaInteragem",
+    component: frmSistemaInteragem,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-de-fila",
+    name: "frmTipoFila",
+    component: frmTipoFila,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/tipo-unidade-material",
+    name: "frmTipoUnidMaterial",
+    component: frmTipoUnidMaterial,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/tabelas/tabelas-simples/bases-de-dados",
+    name: "frmBasesDados",
+    component: frmBasesDados,
+    beforeEnter: authGuard,
   }
+
 ];
 
 const router = createRouter({

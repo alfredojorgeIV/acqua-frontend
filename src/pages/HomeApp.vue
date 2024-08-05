@@ -1,3 +1,10 @@
+<!--  -->
+
+export if varial == true {
+
+} else {
+  window.location.
+}
 <template>
   <div class="container">
     <MenuApp />
